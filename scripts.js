@@ -31,6 +31,7 @@ $(document).ready(function(){
 			text = text.replaceAll('7','7️⃣');
 			text = text.replaceAll('8','8️⃣');
 			text = text.replaceAll('9','9️⃣');
+			text = text.replaceAll('10','🔟');
 			
 			
 			// Add/Remove zero with space
