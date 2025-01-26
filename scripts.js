@@ -136,13 +136,24 @@ $(document).ready(function(){
 		});
 	});
 	
-	$('#chb_chklao').on('change', function() {
-		$('#chb_chkrmlao').prop('checked', false);  
+	$('#chb_addzs').on('change', function() {		
+		onoffchbox("chb_removews");
+	});
+	$('#chb_removews').on('change', function() {		
+		onoffchbox("chb_addzs");
+	});
+	
+	$('#chb_chklao').on('change', function() {		
+		onoffchbox("chb_chkrmlao");
 	});
 
-	$('#chb_chkrmlao').on('change', function() {
-		$('#chb_chklao').prop('checked', false);  
+	$('#chb_chkrmlao').on('change', function() {		
+		onoffchbox("chb_chklao");
 	});
+	
+	function onoffchbox(obj1){
+		$('#'+obj1).prop('checked', false);  
+	}	
 
 	function chunkCharWithLaoChar(str, removelao = 0) {
 		var i; 
