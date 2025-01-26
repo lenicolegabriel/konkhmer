@@ -22,18 +22,19 @@ $(document).ready(function(){
 			text = text.replaceAll('Cr.รูปภาพ วิชา วันนี้',''); // chunk and remove all zero space
 			text = text.replaceAll('Cr.รูปภาพ มาดูวิชา 365',''); // chunk and remove all zero space
 			
-			if ($('#chb_removews').is(':checked')) {
-			}else if ($("#chb_chklao").is(':checked')){
+			// Add/Remove zero with space
+			if ($('#chb_addzs').is(':checked')) {
+				text = chunkText(text,2); // chunk zero content
+			}
+			// Add/Remove lao char
+			if ($("#chb_chklao").is(':checked')){
 				text = chunkCharWithLaoChar(text); // chunk zero content
 			}else if ($("#chb_chkrmlao").is(':checked')){
 				text = chunkCharWithLaoChar(text,1);
-			}else{
-				text = chunkText(text,2); // chunk zero content
 			}
+			// Add ￼ to content
 			if($('#chb_OBJ').is(':checked')) {
 				text = chunkText(text,30,"￼"); // chunk add OBJ char code content
-			}else{				
-				//remove whitespace from the beginning and end of a string.
 			}
 
 			text = text.trim();
@@ -137,9 +138,9 @@ $(document).ready(function(){
 	});
 	
 	$('#chb_addzs').on('change', function() {		
-		onoffchbox("chb_removews");
+		onoffchbox("chb_removesp");
 	});
-	$('#chb_removews').on('change', function() {		
+	$('#chb_removesp').on('change', function() {		
 		onoffchbox("chb_addzs");
 	});
 	
@@ -153,7 +154,7 @@ $(document).ready(function(){
 	
 	function onoffchbox(obj1){
 		$('#'+obj1).prop('checked', false);  
-	}	
+	}
 
 	function chunkCharWithLaoChar(str, removelao = 0) {
 		var i; 
